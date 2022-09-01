@@ -15,7 +15,7 @@ class RCMgmt(multiprocessing.Process):
     handle_q = m.Queue()
     move_count = 0    
     orientation = "right"
-    thresholds = [3,3,3,5,3,3] # may need to change
+    thresholds = [3,3,3,5,3,3] 
     connected=False
     x1 = 1
     y1 = 18
