@@ -1,0 +1,354 @@
+2022-09-03 02:35:10,634 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-03 03:00:39,705 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-03 03:04:42,678 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-03 03:05:14,925 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-03 03:05:22,344 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-03 03:10:07,961 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-03 03:18:38,140 - PacketHandler - DEBUG - UnknownPacketDestination ANDcoool
+
+
+2022-09-03 03:49:07,582 - PacketHandler - DEBUG - UnknownPacketDestination ANDcoool
+
+
+2022-09-03 07:55:50,858 - PacketHandler - DEBUG - UnknownPacketDestination ANDthhj
+
+
+2022-09-03 08:20:49,372 - PacketHandler - DEBUG - UnknownPacketDestination ANDthhj
+
+
+2022-09-03 08:43:25,217 - PacketHandler - DEBUG - UnknownPacketDestination ANDthhj
+
+
+2022-09-03 08:58:13,329 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-03 09:29:56,095 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-03 09:30:11,914 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-03 09:30:11,924 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-03 09:30:11,929 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-03 12:34:42,302 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-03 12:38:43,866 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-03 12:41:01,977 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-03 12:42:26,719 - PacketHandler - DEBUG - UnknownPacketDestination ANDANDhi
+
+
+2022-09-03 12:43:13,646 - PacketHandler - DEBUG - UnknownPacketDestination ANDANDyo
+
+
+2022-09-03 12:43:50,275 - PacketHandler - DEBUG - UnknownPacketDestination ANDANDyo
+
+
+2022-09-03 12:44:24,929 - PacketHandler - DEBUG - UnknownPacketDestination ANDANDokkk
+
+
+2022-09-03 12:44:55,613 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-03 12:45:16,418 - PacketHandler - DEBUG - UnknownPacketDestination ANDANDokkk
+
+
+2022-09-03 12:45:35,214 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-16 16:51:53,689 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-16 17:58:48,570 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 11:50:27,974 - PacketHandler - DEBUG - UnknownPacketDestination AND0,1,3,N,19,10,S,1,12,13,E,11,0,W
+
+
+2022-09-20 12:02:45,250 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 12:11:07,463 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 13:05:24,227 - PacketHandler - DEBUG - UnknownPacketDestination ANDw
+
+2022-09-20 13:06:22,593 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 13:07:18,184 - PacketHandler - DEBUG - UnknownPacketDestination AND0,7,8,N
+
+2022-09-20 13:08:49,605 - PacketHandler - DEBUG - UnknownPacketDestination AND0,7,8,W
+
+2022-09-20 14:10:44,386 - PacketHandler - DEBUG - UnknownPacketDestination ANDHi
+
+
+2022-09-20 14:14:59,275 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 14:14:59,317 - PacketHandler - DEBUG - UnknownPacketDestination ANDhihi
+
+2022-09-20 14:15:20,690 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+2022-09-20 14:15:59,599 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 14:15:59,622 - PacketHandler - DEBUG - UnknownPacketDestination ANDHi
+
+
+2022-09-20 14:16:02,726 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 14:16:07,128 - PacketHandler - DEBUG - UnknownPacketDestination ANDHi
+
+
+2022-09-20 14:16:22,929 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 14:23:10,679 - PacketHandler - DEBUG - UnknownPacketDestination ANDw
+
+2022-09-20 14:23:12,620 - PacketHandler - DEBUG - UnknownPacketDestination ANDd
+
+2022-09-20 14:23:14,479 - PacketHandler - DEBUG - UnknownPacketDestination ANDa
+
+2022-09-20 14:23:15,259 - PacketHandler - DEBUG - UnknownPacketDestination ANDs
+
+2022-09-20 14:23:45,600 - PacketHandler - DEBUG - UnknownPacketDestination AND,0,13,6,South,1,13,8,South,2,15,7,South
+
+2022-09-20 14:24:23,102 - PacketHandler - DEBUG - UnknownPacketDestination AND,0,13,6,South,1,13,8,South,2,15,7,South,3,15,11,South,4,13,11,North
+
+2022-09-20 14:24:32,121 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,1
+
+2022-09-20 14:24:37,606 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,1
+
+2022-09-20 14:24:40,065 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,2
+
+2022-09-20 14:24:50,100 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,3
+
+2022-09-20 14:24:50,719 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,3
+
+2022-09-20 14:24:53,730 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,4
+
+2022-09-20 14:24:56,851 - PacketHandler - DEBUG - UnknownPacketDestination AND,0,13,6,West,5,13,8,East,2,15,7,South,3,15,11,South,4,13,11,North,1,16,9,West,5,13,8,East,3,18,11,South
+
+2022-09-20 14:25:01,729 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,5
+
+2022-09-20 14:25:03,958 - PacketHandler - DEBUG - UnknownPacketDestination AND,0,13,6,West,5,13,8,East,2,15,7,South,3,15,11,South,4,13,11,North,1,16,9,West,5,13,8,East,3,18,11,South
+
+2022-09-20 14:25:07,832 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,0
+
+2022-09-20 14:26:40,095 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 14:27:01,052 - PacketHandler - DEBUG - UnknownPacketDestination ANDHi
+
+
+2022-09-20 14:27:13,356 - PacketHandler - DEBUG - UnknownPacketDestination AND0,1,5,H
+
+
+2022-09-20 14:48:41,751 - PacketHandler - DEBUG - UnknownPacketDestination ANDhi
+
+
+2022-09-20 15:16:47,803 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 15:18:01,992 - AlgoServer - DEBUG - [Errno 32] Broken pipe
+2022-09-20 16:48:56,825 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-20 20:57:40,463 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 02:14:04,767 - BluetoothMgmt - DEBUG - [Errno 110] Connection timed out
+2022-09-21 02:53:28,077 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 02:55:35,897 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 04:18:06,569 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 04:26:48,359 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 04:44:05,719 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 04:45:04,017 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 04:46:19,897 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 04:46:57,891 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 04:48:04,431 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 04:49:32,662 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 04:50:15,958 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 06:19:50,931 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,1
+
+2022-09-21 06:20:04,899 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,2
+
+2022-09-21 06:20:37,402 - PacketHandler - DEBUG - UnknownPacketDestination ANDw
+
+2022-09-21 06:21:40,894 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 07:10:17,323 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 07:15:12,341 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 07:39:37,904 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 07:44:51,749 - PacketHandler - DEBUG - UnknownPacketDestination AND$
+
+
+2022-09-21 08:13:17,032 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 08:21:19,525 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,2
+
+2022-09-21 08:27:15,781 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 08:29:05,799 - PacketHandler - DEBUG - UnknownPacketDestination AND$
+
+2022-09-21 08:32:46,285 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 08:41:16,792 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 08:56:51,805 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 11:40:33,220 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,1,6,2
+
+2022-09-21 11:41:13,366 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 12:02:51,871 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 11:34:29,891 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 11:36:44,971 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,1,6,0
+
+2022-09-21 11:38:50,893 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 12:05:14,240 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 12:30:10,077 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,1,4,0
+
+2022-09-21 12:30:23,039 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 12:31:36,032 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,0
+
+2022-09-21 12:31:37,860 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,1,5,2
+
+2022-09-21 12:40:06,989 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 12:54:33,085 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 13:06:43,203 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 13:07:52,153 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,5,5,0
+
+2022-09-21 13:08:06,651 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,0
+
+2022-09-21 13:11:36,654 - PacketHandler - DEBUG - UnknownPacketDestination ANDxIMG0
+
+2022-09-21 13:12:48,162 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,1,1,5,0
+
+2022-09-21 13:12:52,235 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,1
+
+2022-09-21 13:12:52,884 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,1,1,4,2
+
+2022-09-21 13:14:04,753 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 13:14:26,658 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,1
+
+2022-09-21 13:14:27,583 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,1,1,4,2
+
+2022-09-21 13:14:44,162 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,1
+
+2022-09-21 13:14:44,167 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,1,1,5,2
+
+2022-09-21 13:47:47,502 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 14:15:46,145 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,2,1,8,0
+
+2022-09-21 14:22:12,988 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,2
+
+2022-09-21 14:22:19,491 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,2,3,8,1
+
+2022-09-21 14:22:47,495 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,1
+
+2022-09-21 14:22:49,044 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,1,6,7,3
+
+2022-09-21 14:29:44,498 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,1
+
+2022-09-21 14:29:45,023 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,1,3,4,3
+
+2022-09-21 14:30:17,998 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,2
+
+2022-09-21 14:30:18,017 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,2,3,6,0
+
+2022-09-21 14:30:20,346 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,2
+
+2022-09-21 14:30:21,002 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,2,3,7,0
+
+2022-09-21 14:35:13,411 - PacketHandler - DEBUG - UnknownPacketDestination ANDd
+
+2022-09-21 14:35:58,914 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,1
+
+2022-09-21 14:35:59,941 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,1,3,2,0
+
+2022-09-21 14:34:12,588 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,2
+
+2022-09-21 14:34:13,744 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,4
+
+2022-09-21 14:34:17,430 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,5
+
+2022-09-21 14:34:19,421 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,3
+
+2022-09-21 14:34:20,984 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,1
+
+2022-09-21 15:09:50,290 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,8
+
+2022-09-21 15:09:52,732 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,11,13,4,0
+
+2022-09-21 15:10:04,781 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 15:28:27,919 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,2
+
+2022-09-21 15:34:54,466 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 15:47:21,477 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 15:47:46,712 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 15:58:30,753 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,4,9,0
+
+2022-09-21 15:58:35,445 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,1,4,14,0
+
+2022-09-21 15:58:39,649 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,2,9,14,0
+
+2022-09-21 15:58:42,286 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,3,9,9,0
+
+2022-09-21 16:07:07,455 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 16:13:09,879 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 16:16:37,573 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 16:39:05,606 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 16:39:36,071 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 16:39:59,541 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,5
+
+2022-09-21 16:44:00,983 - AlgoServer - DEBUG - [Errno 9] Bad file descriptor
+2022-09-21 16:45:31,663 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 16:49:29,447 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 17:24:35,713 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 17:25:35,338 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 17:26:12,989 - AlgoServer - DEBUG - [Errno 9] Bad file descriptor
+2022-09-21 17:26:23,474 - AlgoServer - DEBUG - [Errno 9] Bad file descriptor
+2022-09-21 17:27:25,471 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,0
+
+2022-09-21 17:27:26,075 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,4,6,2
+
+2022-09-21 17:27:29,293 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,0
+
+2022-09-21 17:27:29,846 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,4,6,3
+
+2022-09-21 17:27:30,952 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,0
+
+2022-09-21 17:27:31,651 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,4,3,3
+
+2022-09-21 17:27:32,734 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,0
+
+2022-09-21 17:27:33,256 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,4,4,3
+
+2022-09-21 17:27:35,950 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,0
+
+2022-09-21 17:27:36,989 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,5,4,3
+
+2022-09-21 17:27:41,537 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,1,5,9,2
+
+2022-09-21 17:27:44,028 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,2,5,13,2
+
+2022-09-21 17:27:45,202 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,2
+
+2022-09-21 17:27:45,680 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,2,5,14,2
+
+2022-09-21 17:31:40,501 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 17:36:43,782 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 17:38:46,994 - PacketHandler - DEBUG - UnknownPacketDestination ANDHIDEOBS,0
+
+2022-09-21 17:38:47,040 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,0,5,4,2
+
+2022-09-21 17:38:53,510 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,3,5,9,2
+
+2022-09-21 17:38:56,166 - PacketHandler - DEBUG - UnknownPacketDestination ANDADDOBS,4,5,14,2
+
+2022-09-21 17:38:57,841 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 17:43:58,975 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 18:25:55,741 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 18:26:50,137 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 18:29:04,833 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 18:25:37,293 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 18:30:27,315 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 18:30:48,757 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 18:46:54,741 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 19:01:24,170 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 19:16:56,177 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 20:07:19,662 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 20:27:20,880 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 20:57:04,803 - CameraServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 21:44:45,309 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 21:49:10,987 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 21:53:32,280 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 21:54:12,746 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 22:01:56,242 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 22:03:53,759 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 22:04:49,178 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 22:11:26,602 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 22:15:27,984 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 22:19:47,511 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 22:29:05,531 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 23:01:37,491 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-21 23:14:25,726 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
+2022-09-22 00:35:11,179 - AlgoServer - DEBUG - [Errno 32] Broken pipe

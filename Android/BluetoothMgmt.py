@@ -9,10 +9,9 @@ import queue as Queue
 
 class BluetoothMgmt(multiprocessing.Process):
     handle_q = multiprocessing.Manager().Queue()
-
-    whitelist = ['6C:2F:8A:38:0E:52','84:5F:04:53:0F:52']  #Add bluetooth devices' MAC here 
+    whitelist = ['6C:2F:8A:38:0E:52', '84:5F:04:53:0F:52']
   
-    def __init__(self,port,job_q,header):
+    def __init__(self,port,job_q,header, db):
         multiprocessing.Process.__init__(self)
 
         self.port = port
@@ -21,19 +20,27 @@ class BluetoothMgmt(multiprocessing.Process):
         self.header = header
         self.job_q = job_q
         self.daemon=True
+        self.db = db
         self.start()
 
 
     def recv(self,c):
         while True:
             try:
-                data = c.recv(1024) #1024 bytes
+                data = c.recv(1024)
                 if len(data)>0:
-                    packet = data.decode('utf-8') #ascii
+                    packet = data.decode('utf-8')
                     print("Received from Android: " + packet)
-                    self.job_q.put(self.header + packet + "\n")
+                    print(self.header + packet)
+
+                    self.job_q.put(self.header + packet + "\n") #For packet transfer
+                
+                    # For testing, self send back msg to ANDROID(Dest) for testing purposes.
+                    #self.job_q.put(self.header + ':AND:' + packet  + "\n")
+
+
             except BluetoothError as e:
-                print("[ERR][ANDROID]: Disconnected") # consider logging
+                print("[ERR][ANDROID]: Disconnected")#can consider logging...
                 self.logger.debug(e)
                 
                 break
@@ -53,7 +60,6 @@ class BluetoothMgmt(multiprocessing.Process):
 
     def getPacketHeader(self):
         return self.header
-    
     
     def handleProcessor(self):
         while True:
@@ -87,8 +93,8 @@ class BluetoothMgmt(multiprocessing.Process):
                 t.start()
                 t.join()
             else :
-                print("[ERR][ANDROID]","Unknown device tried to connect. MAC: " + str(address))
-                self.logger.debug("Unknown device tried to connect. MAC:", str(address))
+                print("[ERR][ANDROID]","Unknown device tried to connect. MAC: "+str(address))
+                self.logger.debug("Unknown device tried to connect. MAC:",str(address))
                 self.c.close()
                 
            

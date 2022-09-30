@@ -4,16 +4,15 @@ import threading
 import multiprocessing
 import logging
 import queue as Queue
-
 import struct
-import picamera    
+from picamera import PiCamera
 import io
 
 class CameraServer(multiprocessing.Process):
     print_lock = threading.Lock()
     handle_q = multiprocessing.Manager().Queue()
 
-    def __init__(self,host,port,job_q,header):
+    def __init__(self,host,port,job_q,header, db):
         multiprocessing.Process.__init__(self)
         self.port = port
         self.header=header
@@ -21,6 +20,7 @@ class CameraServer(multiprocessing.Process):
         self.host = host
         self.job_q = job_q
         self.c = None 
+        self.db = db
 
         self.daemon=True
         self.start()
@@ -28,7 +28,7 @@ class CameraServer(multiprocessing.Process):
     def run(self):
         try:
             #Camera Settings
-            self.camera = picamera.PiCamera()
+            self.camera = PiCamera() # OUT OF RESOURCES
             self.camera.rotation = 180
             self.camera.resolution = (640, 480)
             self.camera.start_preview()
@@ -44,13 +44,13 @@ class CameraServer(multiprocessing.Process):
 
             while True: 
                 print("[LOG][IMGPC]","Listening for connection")
-                # Create connection with client 
+                # Create connection with client PC on clientPC.py (Running on another comp)
                 self.c, addr = s.accept()
                 
                 # Lock acquired by client 
                 self.print_lock.acquire() 
                 print("[LOG][IMGPC]","Connection from:" + str(addr[0]) +":"+ str(addr[1])) 
-                self.job_q.put(self.header + ":IMG: Camera Processing PC Connected") 
+                self.job_q.put(self.header+":IMG: Camera Processing PC Connected") 
     
                 t1 = threading.Thread(target=self.thread_receive,args=(self.c,self.job_q,))
                 
@@ -71,14 +71,13 @@ class CameraServer(multiprocessing.Process):
         while True:
             if(self.handle_q.qsize()!=0):
                 packet = self.handle_q.get()
-                
-                if (packet[:4] == 'scan'):
-                    self.CameraCapture()   #Snap the img
+                print(f"[CameraServer] | packet = {packet}")
+                if (packet[:1] == 'x'):   #capture an image once 'x' is detected
+                    self.CameraCapture()
                 self.handle_q.task_done()
                 #self.send_socket(packet)
             time.sleep(delay)
 
-    # Take pic
     def CameraCapture(self):
         self.conn = self.c.makefile('wb')
         self.stream = io.BytesIO()
@@ -116,20 +115,32 @@ class CameraServer(multiprocessing.Process):
                 data = data.strip().decode('utf-8')
 
                 if not data: 
-                    print('IMG PC Said: Goodbye') 
+                    print('IMG PC Said: Bye')
                     self.print_lock.release()    # lock released on exit 
                     break
                 if len(data)>0:
-                    job_q.put(self.header+":ALG:"+ data)
-             
                     
+                    print("Img Alphabet Data: " + data)
+                    print("Check AND's job_q.put", job_q.put(self.header+":AND:"+ data)) # Do a print here to check
+                    #job_q.put(self.header+":AND:"+ data) #send android img data (Uncomment this aft checking above)
+                    self.db["IR_IMG_RESULT"] = data   #store img data in db
+                    print("self.db:", self.db) #
+                    
+                    # For A5 Testing
+                    # if (self.db("IR_IMG_RESULT") != '0' or self.db.get("IR_IMG_RESULT") != '-1'):
+                    #     job_q.put(self.header+ ":ALG:" + 'StopMovement') #Tell ALG to stop sending data and hang the system
+                    #     time.sleep(1000000000)
+                       
             except socket.error as e:
                 print(socket.error)
                 self.logger.debug(e)
                 self.print_lock.release() 
                 break
             time.sleep(0.0001)
-                
+            
+      
+            
+      
         # Close Connection
         c.close() 
       

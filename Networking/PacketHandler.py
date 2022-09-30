@@ -9,7 +9,7 @@ class PacketHandler:
         self.logger = logging.getLogger(self.__class__.__name__)
         
     def measure_temp(self):
-        temp = os.popen("vcgencmd measure_temp").readline()  #check if picam can be detected
+        temp = os.popen("vcgencmd measure_temp").readline()
         return (temp.replace("temp=",""))
 
     def registerHandler(self,instance):
@@ -25,6 +25,7 @@ class PacketHandler:
         except KeyError:
             print("Fail to remove, handler not found.")
 
+
     def convertToName(self,header):
         if header == 'STM':
                 return "RC-Car"
@@ -38,15 +39,23 @@ class PacketHandler:
                 return "CAMERA-PC"
             
     def handle(self,packet):
-        splitData = packet.split(':')
+        """
+        :AND:IMG,1,24
+
+        """
+        # TODO - packet = ":AND:1,-1"
+        splitData = packet.split(':') # ["", AND, "1,-1"]
         if len(splitData)>1:
-            recv_from = splitData[0]
-            unique_id = splitData[1]
-            data = splitData[2]
+            recv_from = splitData[0] # ""
+            unique_id = splitData[1] # "AND"
+            data = splitData[2] # "1,-1"
+
+            print(f"recv_from={recv_from} | unique_id={unique_id} | data={data}")
                        
             if unique_id in self.handlers:
                 if not packet.startswith("P:A:set:startposition"):
-                    lo = ("["+self.measure_temp().strip()+"][MSG]["+self.convertToName(recv_from)+"->"+self.convertToName(unique_id)+"]:",data)
+                    print(f"[PacketHandler] packet = {packet}")
+                    # lo = (self.db["IMG_REC_ID_AND_RESULT"]"["+self.measure_temp().strip()+"][MSG]["+self.convertToName(recv_from)+"->"+self.convertToName(unique_id)+"]:",data)
                 self.handlers[unique_id].handle(data+"\n")
         else:
             print("[ERR][PACKETHANDLER]:",packet)

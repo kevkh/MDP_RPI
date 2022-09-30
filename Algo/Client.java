@@ -4,7 +4,7 @@ import java.net.*;
 public class Client {
     public static void main(String args[]) throws Exception{
 
-            Socket socket = new Socket("192.168.33.1", 5000); // our static ip address
+            Socket socket = new Socket("192.168.33.1", 5000);
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

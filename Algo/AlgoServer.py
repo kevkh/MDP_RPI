@@ -5,13 +5,13 @@ import threading
 import multiprocessing
 import logging
 import queue as Queue
+import re
 
 class AlgoServer(multiprocessing.Process):
     print_lock = threading.Lock()
     handle_q = multiprocessing.Manager().Queue()
 
-    # Init
-    def __init__(self,host,port,job_q,header):
+    def __init__(self,host,port,job_q,header, db):
         multiprocessing.Process.__init__(self)
         self.port = port
         self.header=header
@@ -20,10 +20,11 @@ class AlgoServer(multiprocessing.Process):
         self.job_q = job_q
         self.c = None 
         self.daemon=True
+        self.db = db 
         self.start()
         self.cmdArray = None
+        
 
-    # Start running, open socket
     def run(self):
         t2 = threading.Thread(target=self.handleProcessor, args=(0.00001,))
         t2.start()
@@ -32,15 +33,17 @@ class AlgoServer(multiprocessing.Process):
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.bind((self.host, self.port))
         s.listen(5)
+
         self.cmdArray = []
         while True: 
             print("[LOG][ALGOPC]","Listening for connection")
             # Create connection with client 
             self.c, addr = s.accept() 
             
+            #self.c.send(b"7,8,N") #Commands from ANDROID obstacle list
+                      
             # Lock acquired by client 
             self.print_lock.acquire() 
-            
             print("[LOG][ALGOPC]","Connection from:" + str(addr[0]) +":"+ str(addr[1])) 
             #self.job_q.put(self.header+":ALG:PC Connected") 
  
@@ -48,8 +51,7 @@ class AlgoServer(multiprocessing.Process):
             
             t1.start()
             t1.join()
-            
-       
+                   
         s.close()
         t2.join() 
 
@@ -60,72 +62,156 @@ class AlgoServer(multiprocessing.Process):
     def handleProcessor(self,delay):
         while True:
             if(self.handle_q.qsize()!=0):
-                packet = self.handle_q.get()
+                packet = self.handle_q.get().strip()  # Android's obs list
                 self.handle_q.task_done()
-                print("Length of Array: " + str(len(self.cmdArray)))
+   
+                print(f"packet: {packet}") # TODO  -SEE WHAT IS THIS
                 
-                # Commands
-                # if packet starts with 'A', and its not empty, send command to STM
-                if(packet[:1] == 'A' and len(self.cmdArray) != 0):
-                    self.SendCommand()  
-                else:
-                    print("Sending Acknowledgement to ALG")  
+                if packet == '$' or packet.endswith(("N", "S", "E", "W")):
+                    print("Sending Acknowledgement OR Obstacle List to ALG: " + packet) # packet is $ or robot movement
                     self.send_socket(packet)
+                    
+                #print("ACK Packet",self.send_socket(packet))
             time.sleep(delay)
 
     def handle(self,packet):
+        print(f"[AlgoServer] handle() - putting packet = '{packet}'")
         self.handle_q.put(packet)
-
 
     def send_socket(self,message):
         try:
-                if(self.c == None):
-                    print("[ERR][ALGOPC]","Trying to send but no clients connected") 
-                    # self.job_q.put(self.header+":ALG:PC not connected")
-                else:
-                    self.c.send(message.encode('utf-8'))
+            if(self.c == None):
+                print("[ERR][ALGOPC]","Trying to send but no clients connected")
+                # self.job_q.put(self.header+":ALG:PC not connected")
+            else: 
+                self.c.send(message.encode('utf-8'))
         except socket.error as e:
                 print(socket.error)
                 self.logger.debug(e)
 
-    # Send command to STM, to tell RC to run
-    def SendCommand(self):
-        print("Running command:" + self.cmdArray[0])
-        self.job_q.put(self.header + ":STM:" + self.cmdArray[0])
-        del self.cmdArray[0]  #delete array aft exe
+ 
+    # def SendCommand(self): # Send Command (Array format for List splitting) over to STM
+    #     print("Running command:" + self.cmdArray[0])
+
+    #     self.job_q.put(self.header + ":STM:" + self.cmdArray[0]) #else, continue with next STM movement
+    #     del self.cmdArray[0]
+        
+        # self.job_q.put(self.header + ":STM:" + (self.cmdArray[0] + '$')) #else, continue with next STM movement
+        # del (self.cmdArray[0] + '$')
+
+        # with Cam
+        # if(self.cmdArray[0] == 'x'):
+        #     self.job_q.put(self.header + ":CPC:" + self.cmdArray[0]) #If detect 'x', take a pic
+        # else:
+        #     self.job_q.put(self.header + ":STM:" + self.cmdArray[0]) #else, continue with next STM movement
+        # del self.cmdArray[0]
         
 # Thread Function
     def thread_receive(self,c,job_q): 
         while True: 
             try:
-                data = c.recv(1024) #1024 bytes
-                data = data.decode('utf-8')  #ascii
+                data = c.recv(1024)
+                data = data.decode('utf-8').strip()
+                print(f"[AlgoServer] received data = '{data}'")
 
-                if not data:  # No data
-                    print('ALGO PC Said: Goodbye')
+                if not data: 
+                    print('ALGO PC Said: Bye')
                     self.print_lock.release()    # lock released on exit 
                     break
-                if len(data)>0:
-                    # Week 8 (Img Rec Run)
-                    if(data[:4] == ':IMG'):
-                        job_q.put(self.header + data)
-                    elif(data[:4] == ':AND'):
-                        job_q.put(self.header + data)
-                    else:
-                        print("[RECV New List from ALG]")
-                        buffer = data.split(':')
-                        commands = buffer[2].split(',')
-                        self.cmdArray.extend(commands)
-                        job_q.put(self.header + ":STM:" +self.cmdArray[0])
-                        del self.cmdArray[0] 
-             
+                if len(data)>0:                   
                     
+                        print("[RECV New List from ALG]: " + data)  
+
+                        if (data == 'x'):      # Command to snap a pic, send to IMG Server
+                            print("IMG Data" + data)
+                            job_q.put(self.header + ":IMG:" + data) 
+
+                        elif data.startswith('xIMG'):
+
+                            # "xIMG,0" - if there is no obstacle left
+                            if len(data) == 6:
+                                x, image_id = data[0], data[1:]
+
+                            # "xIMG,0j/k/m/n/w010/s010" - if there is any obstacle left
+                            else:
+                                x, image_id, movement = data[0], data[1:6], data[6:]
+                                job_q.put(f":STM:{movement}")
+
+                            job_q.put(self.header + ":IMG:" + x) 
+                            # job_q.put("STM:ALG:$\n") # TODO 
+
+
+                            print("Before sleep")
+                            # wait for camera server to receive the image result
+                            time.sleep(3)
+                            print("After sleep")
+                            
+                            print("See self db data:" ,self.db) # Check 
+
+                            self.db["ALGO_IMG_ID"] = image_id
+                            print(f"Print IR_IMG_RESULT: = {self.db['IR_IMG_RESULT']}")
+
+                            # TODO
+                            """
+                            IMG,1
+                            24
+                            """
+                            img_rec_id_and_result = self.db["ALGO_IMG_ID"] + self.db["IR_IMG_RESULT"] # :AND:IMG,1:AND:24
+                            img_rec_id_and_result = img_rec_id_and_result.split(':') # ["AND", "IMG,1", "AND" "24"]
+                            img_rec_id_and_result = [part for part in img_rec_id_and_result if part != "AND"] # ["IMG,1", "24"]
+                            img_rec_id_and_result = ','.join(img_rec_id_and_result) # IMG,1,24
+                            img_rec_id_and_result = img_rec_id_and_result[4:] # 1,24
+
+                            self.db["IMG_REC_ID_AND_RESULT"] = img_rec_id_and_result # 1,24
+                            print(f"self.db['ALGO_IMG_ID'] = {self.db['ALGO_IMG_ID']}")
+                            print(f"self.db['IMG_REC_ID_AND_RESULT'] = {self.db['IMG_REC_ID_AND_RESULT']}")
+
+                            self.db['concatResult'] = "IMG," + self.db["IMG_REC_ID_AND_RESULT"] # IMG,1,24
+                            print(f"Concat ImgResult = {self.db['concatResult']} ")  # Result: "IMG,Int,Int"                            
+                            self.job_q.put(f":AND: { self.db['concatResult'] } ") # Send Merged data "IMG,1,24" to AND for live_location
+                            
+                            #self.job_q.put(f":AND:{self.db['IMG_REC_ID_AND_RESULT']}") #Send merged data to ANDROID for Live location      
+                            #self.job_q.put(f":ALG:{self.db['IMG_REC_ID_AND_RESULT']}") #send to Algo
+                            # self.job_q.put("STM:ALG:$\n") # TODO 
+
+                            #A5 Logic:
+                            # if(self.db["IR_IMG_RESULT"] != 0 or self.db["IR_IMG_RESULT"] != -1): #if not bullseyes or Invalid pic
+                            #     self.db['concatResult'] = "IMG," + self.db["IMG_REC_ID_AND_RESULT"] # IMG,1,24
+                            #     print(f"Concat ImgResult = {self.db['concatResult']} ")  #Shud show "IMG,1,24"
+                                
+                            #     self.job_q.put(f":AND: { self.db['concatResult']}") # Send CONCAT data "IMG,1,24" to AND for live_location
+                            #     #self.job_`q.put(f":ALG: {self.db['IMG_REC_ID_AND_RESULT']}") # Send to algo e.g. (1,24)
+                            
+                            # else:
+                            #     # Stop MOVEMENT
+                            #     print("Stop Car Movement:", job_q.put(self.header + ":STM:" + "\n\n\n\n\n\n\n")) #Just send stop string to stop the robot from moving
+                            
+                        elif matches := re.findall(r"([w|s|j|k]\d{3})", data): 
+                            data = matches[0]
+                            print("NEW movement data",data)
+                            print("Movements Data: " + data)
+                            job_q.put(self.header + ":STM:" + data) #send movements data to STM
+
+                        elif data.startswith("ROBOT"): # send android robot data
+
+                            if matches := re.findall(r"([w|s|j|k]\d{3})$", data):
+                                data = matches[0]
+                                live_location, movement = data[:-4], data[-4:]
+                                print("AND's Robot Data" + live_location)
+                                job_q.put(self.header + ":AND:" + live_location) #send to AND live ROBOT data
+                                job_q.put(self.header + ":STM:" + movement) #send to STM movement data
+                            else:
+                                print("AND's Robot Data" + data)
+                                job_q.put(self.header + ":AND:" + data) #send to AND live ROBOT data
+
+                        
             except socket.error as e:
                 print(socket.error)
                 self.logger.debug(e)
                 self.print_lock.release() 
                 break
             time.sleep(0.0001)
+            
             
         # Close Connection
         c.close() 
