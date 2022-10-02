@@ -150,25 +150,44 @@ class AlgoServer(multiprocessing.Process):
 
                             self.db["ALGO_IMG_ID"] = image_id
                             print(f"Print IR_IMG_RESULT: = {self.db['IR_IMG_RESULT']}")
+                            
+                            #Week 9 Logic,
+                            if (self.db["IR_IMG_RESULT"] == ":AND:39"): # Left turn (Change the value to left turn command)
+                                # SEND ALG LEFT TURN command
+                                self.job_q.put(f":ALG: {'k000'}")
+                                print('')
+                            elif(self.db["IR_IMG_RESULT"] == ":AND:38"): # Right turn (Change the value to right turn command)
+                                # Send ALG Right turn command
+                                self.job_q.put(f":ALG: {'j000'}")
+                                print('')
+                                
+                                
+                            # Week 8 codes(Can comment coz android side not needed anymore)
+                            # # TODO
+                            # """
+                            # IMG,1
+                            # 24
+                            # """
+                            # img_rec_id_and_result = self.db["ALGO_IMG_ID"] + self.db["IR_IMG_RESULT"] # :AND:IMG,1:AND:24
+                            # img_rec_id_and_result = img_rec_id_and_result.split(':') # ["AND", "IMG,1", "AND" "24"]
+                            # img_rec_id_and_result = [part for part in img_rec_id_and_result if part != "AND"] # ["IMG,1", "24"]
+                            # img_rec_id_and_result = ','.join(img_rec_id_and_result) # IMG,1,24
+                            # img_rec_id_and_result = img_rec_id_and_result[4:] # 1,24
 
-                            # TODO
-                            """
-                            IMG,1
-                            24
-                            """
-                            img_rec_id_and_result = self.db["ALGO_IMG_ID"] + self.db["IR_IMG_RESULT"] # :AND:IMG,1:AND:24
-                            img_rec_id_and_result = img_rec_id_and_result.split(':') # ["AND", "IMG,1", "AND" "24"]
-                            img_rec_id_and_result = [part for part in img_rec_id_and_result if part != "AND"] # ["IMG,1", "24"]
-                            img_rec_id_and_result = ','.join(img_rec_id_and_result) # IMG,1,24
-                            img_rec_id_and_result = img_rec_id_and_result[4:] # 1,24
+                            # self.db["IMG_REC_ID_AND_RESULT"] = img_rec_id_and_result # 1,24
+                            # print(f"self.db['ALGO_IMG_ID'] = {self.db['ALGO_IMG_ID']}")
+                            # print(f"self.db['IMG_REC_ID_AND_RESULT'] = {self.db['IMG_REC_ID_AND_RESULT']}")
 
-                            self.db["IMG_REC_ID_AND_RESULT"] = img_rec_id_and_result # 1,24
-                            print(f"self.db['ALGO_IMG_ID'] = {self.db['ALGO_IMG_ID']}")
-                            print(f"self.db['IMG_REC_ID_AND_RESULT'] = {self.db['IMG_REC_ID_AND_RESULT']}")
-
-                            self.db['concatResult'] = "IMG," + self.db["IMG_REC_ID_AND_RESULT"] # IMG,1,24
-                            print(f"Concat ImgResult = {self.db['concatResult']} ")  # Result: "IMG,Int,Int"                            
-                            self.job_q.put(f":AND: { self.db['concatResult'] } ") # Send Merged data "IMG,1,24" to AND for live_location
+                            # self.db['concatResult'] = "IMG," + self.db["IMG_REC_ID_AND_RESULT"] # IMG,1,24
+                            # print(f"Concat ImgResult = {self.db['concatResult']} ")  # Result: "IMG,Int,Int"                            
+                            # self.job_q.put(f":AND: { self.db['concatResult'] } ") # Send Merged data "IMG,1,24" to AND for live_location
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             
                             #self.job_q.put(f":AND:{self.db['IMG_REC_ID_AND_RESULT']}") #Send merged data to ANDROID for Live location      
                             #self.job_q.put(f":ALG:{self.db['IMG_REC_ID_AND_RESULT']}") #send to Algo

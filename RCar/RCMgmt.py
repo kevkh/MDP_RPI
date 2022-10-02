@@ -14,8 +14,6 @@ class RCMgmt(multiprocessing.Process):
     serial_port = serial.Serial()
     m = multiprocessing.Manager()
     handle_q = m.Queue()
-    # x1 = 1
-    # y1 = 18
     connected=False
     count = 0
 
@@ -27,8 +25,6 @@ class RCMgmt(multiprocessing.Process):
         self.serial_port.baudrate = baud
         self.serial_port.port = port
         self.serial_port.timeout = timeout
-        # self.x1 = int(self.x1)
-        # self.y1 = int(self.y1)
         self.daemon=True
         self.start()
 
@@ -96,16 +92,22 @@ class RCMgmt(multiprocessing.Process):
                 if len(data) == 0:
                     continue
                 print('raw data from STM:', data.decode('utf-8'))
-                data = data.decode('utf-8')
-                
+                data = data.decode('utf-8')   # Can be $ or IR Values(float values maybe), may have to do a split() here if ($,IR) are sent together
+                                              # newData = data.split() ; Then, we use the newData below.
+                                              
                 #Week 8,
-                print("RC Mgmt STM to RPI", data)   #Sending '$' to ALG for ACK
-                job_q.put(self.header+ ":ALG:" + data  + "\n")  # IS it ACK? Gotta check
-                
-                #job_q.put(self.header+ ":STM:" + data + "\n")
-
+                # print("RC Mgmt STM to RPI", data)   #Sending '$' to ALG for ACK
+                # job_q.put(self.header+ ":ALG:" + data  + "\n")  # Check if its ACK("$")
+            
+                #Week 9,
                 #Fastest Car, See flow below
-                #job_q.put(self.header+":AND:"+data + "\n") 
+                # if (data >= 45 and data <=55):  #Range of IR values (45 to 55)
+                #     print('IR value IN RANGE')
+                #     job_q.put(self.header+ ":ALG:" + 'x' + "\n")    #Send 'x' to ALG to stop the car to take pic.
+
+                # else: 
+                #     print('not in range')
+                #     job_q.put(self.header+ ":ALG:" + data  + "\n")  #Send $ to ALG to acknowledge movements
 
             except serial.SerialException as e:
                 print >> stderr,(self.__class__.__name__,e)
