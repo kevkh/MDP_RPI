@@ -88,24 +88,7 @@ class AlgoServer(multiprocessing.Process):
         except socket.error as e:
                 print(socket.error)
                 self.logger.debug(e)
-
- 
-    # def SendCommand(self): # Send Command (Array format for List splitting) over to STM
-    #     print("Running command:" + self.cmdArray[0])
-
-    #     self.job_q.put(self.header + ":STM:" + self.cmdArray[0]) #else, continue with next STM movement
-    #     del self.cmdArray[0]
-        
-        # self.job_q.put(self.header + ":STM:" + (self.cmdArray[0] + '$')) #else, continue with next STM movement
-        # del (self.cmdArray[0] + '$')
-
-        # with Cam
-        # if(self.cmdArray[0] == 'x'):
-        #     self.job_q.put(self.header + ":CPC:" + self.cmdArray[0]) #If detect 'x', take a pic
-        # else:
-        #     self.job_q.put(self.header + ":STM:" + self.cmdArray[0]) #else, continue with next STM movement
-        # del self.cmdArray[0]
-        
+       
 # Thread Function
     def thread_receive(self,c,job_q): 
         while True: 
@@ -184,7 +167,7 @@ class AlgoServer(multiprocessing.Process):
                             
                             # else:
                             #     # Stop MOVEMENT
-                            #     print("Stop Car Movement:", job_q.put(self.header + ":STM:" + "\n\n\n\n\n\n\n")) #Just send stop string to stop the robot from moving
+                            #     print("Stop Car Movement:", job_q.put(self.header + ":STM:" + "\n\n\n\n")) #Just send stop string to stop the robot from moving
                             
                         elif matches := re.findall(r"([w|s|j|k]\d{3})", data): 
                             data = matches[0]
