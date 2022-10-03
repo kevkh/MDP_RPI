@@ -93,7 +93,8 @@ class RCMgmt(multiprocessing.Process):
                     continue
                 print('raw data from STM:', data.decode('utf-8'))
                 data = data.decode('utf-8')   # Can be $ or IR Values(float values maybe), may have to do a split() here if ($,IR) are sent together
-                                              # newData = data.split() ; Then, we use the newData below.
+                                              # newData = data.split() ; Then, we use the newData below. 
+                                              # data[0] = $ ; data[1] = IR (Need to check if the data transferred is in this format)
                                               
                 #Week 8,
                 # print("RC Mgmt STM to RPI", data)   #Sending '$' to ALG for ACK
@@ -103,11 +104,11 @@ class RCMgmt(multiprocessing.Process):
                 #Fastest Car, See flow below
                 # if (data >= 45 and data <=55):  #Range of IR values (45 to 55)
                 #     print('IR value IN RANGE')
-                #     job_q.put(self.header+ ":ALG:" + 'x' + "\n")    #Send 'x' to ALG to stop the car to take pic.
+                #     job_q.put(self.header+ ":ALG:" + newData[1] + "\n")    #Send IR values to ALG to process the stop movement (On AlG side)
 
                 # else: 
-                #     print('not in range')
-                #     job_q.put(self.header+ ":ALG:" + data  + "\n")  #Send $ to ALG to acknowledge movements
+                #     print('IR Value NOT In Range')
+                #     job_q.put(self.header+ ":ALG:" + newData[0]  + "\n")  #Send $ to ALG to acknowledge movements
 
             except serial.SerialException as e:
                 print >> stderr,(self.__class__.__name__,e)
