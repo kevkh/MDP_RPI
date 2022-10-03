@@ -10,6 +10,7 @@ cs.connect(('192.168.33.1', 5001))  #connect to RPI
 print('Connected to RPi!')
 connection = cs.makefile('rb')
 
+
 try:
     img = None
     while True:

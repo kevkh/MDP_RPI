@@ -121,14 +121,14 @@ class CameraServer(multiprocessing.Process):
                 if len(data)>0:
                     
                     print("Img Alphabet Data: " + data)
-                    print("Check AND's job_q.put", job_q.put(self.header+":AND:"+ data)) # Do a print here to check
-                    #job_q.put(self.header+":AND:"+ data) #send android img data (Uncomment this aft checking above)
+                    #print("Check AND's job_q.put", job_q.put(self.header+":AND:"+ data)) # Do a print here to check
+                    job_q.put(self.header+":AND:"+ data) #send android img data (Uncomment this aft checking above)
                     self.db["IR_IMG_RESULT"] = data   #store img data in db
                     print(data)
                     #print("self.db:", self.db)
                     
                     # For A5 Test, #check if the data above is ":AND:0" or just "0" string
-                    # if (self.db("IR_IMG_RESULT") != ":AND:0" or self.db("IR_IMG_RESULT") != ":AND:-1"):
+                    # if (self.db("IR_IMG_RESULT") != ":AND:0" and self.db("IR_IMG_RESULT") != ":AND:-1"):
                     #     job_q.put(self.header+ ":ALG:" + 'StopMovement') #Tell ALG to stop sending data and hang the system or send x again?
                     #     time.sleep(10000000)
                        

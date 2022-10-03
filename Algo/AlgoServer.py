@@ -109,6 +109,18 @@ class AlgoServer(multiprocessing.Process):
                             print("IMG Data" + data)
                             job_q.put(self.header + ":IMG:" + data) 
 
+                            time.sleep(7)
+
+            
+                            print(f"Print IR_IMG_RESULT: = {self.db['IR_IMG_RESULT']}")
+
+                            # A5 CHANGES
+                            if (self.db["IR_IMG_RESULT"] != ":AND:0" and self.db["IR_IMG_RESULT"] != ":AND:-1"): #VALID IMAGE
+                                job_q.put(self.header+ ":ALG:" + 'StopMovement') #Tell ALG to stop sending data and hang the system or send x again?
+                                time.sleep(10000000)
+
+
+
                         elif data.startswith('xIMG'):
 
                             # "xIMG,0" - if there is no obstacle left
@@ -133,6 +145,11 @@ class AlgoServer(multiprocessing.Process):
 
                             self.db["ALGO_IMG_ID"] = image_id
                             print(f"Print IR_IMG_RESULT: = {self.db['IR_IMG_RESULT']}")
+
+                            # A5 CHANGES
+                            if (self.db["IR_IMG_RESULT"] != ":AND:0" and self.db["IR_IMG_RESULT"] != ":AND:-1"): #VALID IMAGE
+                                job_q.put(self.header+ ":ALG:" + 'StopMovement') #Tell ALG to stop sending data and hang the system or send x again?
+                                time.sleep(10000000)
 
                             # TODO
                             """
@@ -169,7 +186,7 @@ class AlgoServer(multiprocessing.Process):
                             #     # Stop MOVEMENT
                             #     print("Stop Car Movement:", job_q.put(self.header + ":STM:" + "\n\n\n\n")) #Just send stop string to stop the robot from moving
                             
-                        elif matches := re.findall(r"([w|s|j|k]\d{3})", data): 
+                        elif matches := re.findall(r"([w|s|a|d|j|k|n|m]\d{3})", data): 
                             data = matches[0]
                             print("NEW movement data",data)
                             print("Movements Data: " + data)
@@ -177,7 +194,7 @@ class AlgoServer(multiprocessing.Process):
 
                         elif data.startswith("ROBOT"): # send android robot data
 
-                            if matches := re.findall(r"([w|s|j|k]\d{3})$", data):
+                            if matches := re.findall(r"([w|s|a|d|j|k|n|m]\d{3})$", data):
                                 data = matches[0]
                                 live_location, movement = data[:-4], data[-4:]
                                 print("AND's Robot Data" + live_location)
