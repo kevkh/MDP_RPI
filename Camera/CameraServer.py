@@ -120,17 +120,29 @@ class CameraServer(multiprocessing.Process):
                     break
                 if len(data)>0:
                     
-                    print("Img Alphabet Data: " + data)
-                    print("Check AND's job_q.put", job_q.put(self.header+":AND:"+ data)) # Do a print here to check
-                    #job_q.put(self.header+":AND:"+ data) #send android img data (Uncomment this aft checking above)
-                    self.db["IR_IMG_RESULT"] = data   #store img data in db
-                    print("self.db:", self.db) #
+                    print("IMG Alphabet Data: " + data)
+                    print(f"data='{data}' | data == ':AND:39' = {data == ':AND:39'}")
                     
-                    # For A5 Testing
-                    # if (self.db("IR_IMG_RESULT") != '0' or self.db.get("IR_IMG_RESULT") != '-1'):
-                    #     job_q.put(self.header+ ":ALG:" + 'StopMovement') #Tell ALG to stop sending data and hang the system
-                    #     time.sleep(1000000000)
-                       
+                    if (data == ":AND:39"): # Left turn 
+                        # SEND ALG LEFT TURN command
+
+                        print("Send IMG left")
+                        job_q.put(self.header+":ALG:"+ 'IMG,left')
+                        print(job_q) #shud be some Hex value
+                        print('Left turn Image sent')
+                        
+                    elif(data == ":AND:38"): # Right turn 
+                        # Send ALG Right turn command
+
+                        print("Send IMG right")
+                        job_q.put(self.header+":ALG:"+ 'IMG,right')
+                        print('Right turn Image sent')
+                    else: # Just send a left turn command
+                        print("IMG Error Received:", data)
+                
+                        job_q.put(self.header+":ALG:"+ 'IMG,left') #Just do a left turn
+                        print('By Default, Left turn Image sent')
+                                 
             except socket.error as e:
                 print(socket.error)
                 self.logger.debug(e)
@@ -138,9 +150,6 @@ class CameraServer(multiprocessing.Process):
                 break
             time.sleep(0.0001)
             
-      
-            
-      
         # Close Connection
         c.close() 
       

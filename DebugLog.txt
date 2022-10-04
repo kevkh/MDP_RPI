@@ -352,3 +352,7 @@
 2022-09-21 23:01:37,491 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
 2022-09-21 23:14:25,726 - BluetoothMgmt - DEBUG - [Errno 104] Connection reset by peer
 2022-09-22 00:35:11,179 - AlgoServer - DEBUG - [Errno 32] Broken pipe
+2022-09-22 08:43:19,562 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-22 08:57:56,763 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-22 08:59:48,245 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer
+2022-09-22 09:16:25,084 - AlgoServer - DEBUG - [Errno 104] Connection reset by peer

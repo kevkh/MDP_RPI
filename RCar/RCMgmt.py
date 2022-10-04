@@ -92,23 +92,26 @@ class RCMgmt(multiprocessing.Process):
                 if len(data) == 0:
                     continue
                 print('raw data from STM:', data.decode('utf-8'))
-                data = data.decode('utf-8')   # Can be $ or IR Values(float values maybe), may have to do a split() here if ($,IR) are sent together
+                data = data.decode('utf-8')   # Can be $ or IR Values, may have to do a split() here if ($,IR) are sent together
                                               # newData = data.split() ; Then, we use the newData below. 
-                                              # data[0] = $ ; data[1] = IR (Need to check if the data transferred is in this format)
+                                              # newData[0] = $ ; newData[1] = IR (Need to check if the data transferred is in this format)
                                               
                 #Week 8,
-                # print("RC Mgmt STM to RPI", data)   #Sending '$' to ALG for ACK
-                # job_q.put(self.header+ ":ALG:" + data  + "\n")  # Check if its ACK("$")
+                print("RC Mgmt STM to RPI", data)   #Sending '$' to ALG for ACK
+                job_q.put(self.header+ ":ALG:" + data  + "\n")  # Check if its ACK("$")
             
-                #Week 9,
-                #Fastest Car, See flow below
-                # if (data >= 45 and data <=55):  #Range of IR values (45 to 55)
-                #     print('IR value IN RANGE')
-                #     job_q.put(self.header+ ":ALG:" + newData[1] + "\n")    #Send IR values to ALG to process the stop movement (On AlG side)
-
+                #Week 9,  Uncomment this once IR Values works
+                # Fastest Car, See flow below
+                # Cast string data to Integer
+                # if (int(data) >= 45 and int(data) <= 55):  #Range of IR values (45 to 55)
+                #     print('IR values IN RANGE')
+                      #Maybe need to cast back to string for newData[1], str(newData[1])
+                #     job_q.put(self.header+ ":ALG:" + newData[1] + "\n")  #Send IR values to ALG to process the stop movement (On AlG side)
+                #     job_q.put(self.header+ ":ALG:" + "StopMovement" + "\n") OR send ALG a "StopMovement" string to stop the car
                 # else: 
                 #     print('IR Value NOT In Range')
-                #     job_q.put(self.header+ ":ALG:" + newData[0]  + "\n")  #Send $ to ALG to acknowledge movements
+                
+ 
 
             except serial.SerialException as e:
                 print >> stderr,(self.__class__.__name__,e)
@@ -131,15 +134,3 @@ class RCMgmt(multiprocessing.Process):
 # 4. Image will be captured, the IMG_RESULT will be processed, then send the IMG Result to ALG to continue the left/right movement
 # 5. Step 2 to 4 will be repeated until the car reaches the end of the carpark
 # 6. End of run
-
-
-
-
-
-
-
-# Fast car flow: (Ignore tis flow)
-# 1. AND send a 'start' string to ALG to trigger obstacle list
-# 2. ALG will send movement one by one to STM + IR values to append 
-# 3. Once IR sensor detect wall, do hardcode turning(obstacles commands from Android)
-# or 3b, Once IMG_REG take pic, process, then avoid?
