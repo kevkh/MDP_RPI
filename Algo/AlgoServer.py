@@ -65,11 +65,16 @@ class AlgoServer(multiprocessing.Process):
    
                 print(f"BEFORE | packet: {packet}") # TODO  - See what's in this packet
                 
-                # This Packet is from STM(RC) To ALG 
+                # This Packet is from STM(RC) To ALG , #TODO May have to do a packet.range(45,55) or (packet >= '45' and packet <= '55')
                 if packet == '$' or packet.endswith(("N", "S", "E", "W")):  #Sending From STM TO ALGO
                     print("Sending Acknowledgement OR Obstacle List to ALG: " + packet) # packet is $ or robot movement
                     self.send_socket(packet)
-                
+                    
+                # Sending IR Value to ALG
+                # elif (packet >= '45' and packet <= '55'):
+                #     print("Sending IR Value:", packet)
+                #     self.send_socket(packet)
+                      
                 # This packet is from IMG Server to ALG
                 elif packet == "IMG,left" or packet == "IMG,right": #Sending from IMG TO ALGO
                     # packet.split(",")
