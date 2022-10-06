@@ -14,7 +14,6 @@ d = manager.dict()
 
 #Create Process Array
 processes = []
-
 #Create multi-thread process queue
 process_Queue = multiprocessing.Manager().Queue()
 

@@ -55,6 +55,8 @@ class BluetoothMgmt(multiprocessing.Process):
             self.c.send(str(message+"\n"))
             time.sleep(0.6)  
         
+            
+
     def close_connection(self,c):
         self.c.close()
 
