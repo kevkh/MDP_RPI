@@ -96,9 +96,8 @@ class RCMgmt(multiprocessing.Process):
                 
                 #Week 8,
                 print("RC Mgmt STM to RPI", data)   #Sending '$' to ALG for ACK
-                job_q.put(self.header+ ":ALG:" + data  + "\n")  # IS it ACK? Gotta check
+                job_q.put(self.header+ ":ALG:" + data  + "\n")  # Is it ACK? Gotta check
                 
-                #Week 9
 
             except serial.SerialException as e:
                 print >> stderr,(self.__class__.__name__,e)
@@ -110,16 +109,4 @@ class RCMgmt(multiprocessing.Process):
                 break
 
             time.sleep(0.000001)
-
-#job_q = Queue()
-#RC-Car = RC-CarManager("COM3",115200,0,job_q)
-
-# Fast car flow:
-# 1. AND send a 'start' string to ALG to trigger obstacle list
-# 2. ALG will send movement one by one to STM via RPI
-# 3. Once IR sensor detects obstacle, STM will send the IR values over to ALG to stop the send a "STOP" command (x) to stop the car and take a picture
-# 4. Image will be captured, the IMG_RESULT will be processed, then send the IMG Result to ALG to continue the left/right movement
-# 5. Step 2 to 4 will be repeated until the car reaches the end of the carpark
-# 6. End of run
-
 
